@@ -1,0 +1,21 @@
+# virtual env
+venv310/
+
+# python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# model weights
+*.pt
+*.bin
+*.safetensors
+
+# training outputs
+outputs/
+saved_model/*/
+!saved_model/*.py
+
+# huggingFace cache
+.cache/
