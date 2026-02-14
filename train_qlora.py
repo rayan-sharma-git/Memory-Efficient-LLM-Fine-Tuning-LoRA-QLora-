@@ -153,8 +153,7 @@ trainer = Trainer(
     args = training_args,
     train_dataset = train_dataset,
     eval_dataset = eval_dataset,
-    data_collator = data_collator,
-    tokenizer = tokenizer
+    data_collator = data_collator
 )
 
 # step-10 train
