@@ -135,7 +135,7 @@ training_args = TrainingArguments(
     max_grad_norm = 1.0,
     fp16 = torch.cuda.is_available(),
     save_total_limit = 2,
-    remove_unused_columns = True,
+    remove_unused_columns = False,
     dataloader_num_workers = 4,
     report_to = 'none',
     run_name = 'epoch_loss_clean_logs',
@@ -143,8 +143,7 @@ training_args = TrainingArguments(
     disable_tqdm = False,
     push_to_hub = False,
     resume_from_checkpoint = None,
-    optim = 'paged_adamw_8bit',
-    remove_unused_columns=False
+    optim = 'paged_adamw_8bit'
 )
 
 # step-9 setup trainer
