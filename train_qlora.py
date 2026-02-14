@@ -143,7 +143,8 @@ training_args = TrainingArguments(
     disable_tqdm = False,
     push_to_hub = False,
     resume_from_checkpoint = None,
-    optim = 'paged_adamw_8bit'
+    optim = 'paged_adamw_8bit',
+    remove_unused_columns=False
 )
 
 # step-9 setup trainer
