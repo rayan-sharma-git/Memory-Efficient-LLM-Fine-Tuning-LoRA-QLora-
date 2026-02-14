@@ -92,12 +92,14 @@ eval_dataset = eval_dataset.map(format_fn)
 # step-6 tokenization fn
 
 def tokenize_fn(example):
-    return tokenizer(
+    tokens = tokenizer(
         example['text'],
-        truncation = True,
-        padding = 'max_length',
-        max_length = 512
+        truncation=True,
+        padding='max_length',
+        max_length=512
     )
+    tokens["labels"] = tokens["input_ids"].copy()
+    return tokens
 
 train_dataset = train_dataset.map(tokenize_fn, batched = True)
 eval_dataset = eval_dataset.map(tokenize_fn, batched = True)
