@@ -101,8 +101,17 @@ def tokenize_fn(example):
     tokens["labels"] = tokens["input_ids"].copy()
     return tokens
 
-train_dataset = train_dataset.map(tokenize_fn, batched = True)
-eval_dataset = eval_dataset.map(tokenize_fn, batched = True)
+train_dataset = train_dataset.map(
+    tokenize_fn,
+    batched=True,
+    remove_columns=train_dataset.column_names
+)
+
+eval_dataset = eval_dataset.map(
+    tokenize_fn,
+    batched=True,
+    remove_columns=eval_dataset.column_names
+)
 
 train_dataset.set_format('torch')
 eval_dataset.set_format('torch')
@@ -134,7 +143,7 @@ training_args = TrainingArguments(
     max_grad_norm = 1.0,
     fp16 = torch.cuda.is_available(),
     save_total_limit = 2,
-    remove_unused_columns = False,
+    remove_unused_columns = True,
     dataloader_num_workers = 0,
     report_to = 'none',
     run_name = 'epoch_loss_clean_logs',
