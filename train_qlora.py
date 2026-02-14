@@ -104,9 +104,6 @@ def tokenize_fn(example):
 train_dataset = train_dataset.map(tokenize_fn, batched = True)
 eval_dataset = eval_dataset.map(tokenize_fn, batched = True)
 
-train_dataset = train_dataset.remove_columns(train_dataset.column_names)
-eval_dataset = eval_dataset.remove_columns(eval_dataset.column_names)
-
 train_dataset.set_format('torch')
 eval_dataset.set_format('torch')
 
